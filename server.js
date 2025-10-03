@@ -14,7 +14,7 @@ class MVSF_Map
 
    constructor ()
    {
-      this.ReadFromEnv (Settings.SQL.config);
+      this.ReadFromEnv (Settings.SQL.config, [ "host", "port", "user", "password", "database" ]);
 
       switch (Settings.SQL.type)
       {
@@ -34,9 +34,8 @@ class MVSF_Map
       return match ? match[1] : null;
    }
 
-   ReadFromEnv (Config)
+   ReadFromEnv (Config, aFields)
    {
-      let aFields = ["host", "port", "user", "password", "database" ];
       let sValue;
       
       for (let i=0; i < aFields.length; i++)
@@ -50,6 +49,8 @@ class MVSF_Map
    {
       if (pMVSQL)
       {
+         this.ReadFromEnv (Settings.MVSF, [ "nPort" ]);
+
          this.#pServer = new MVSF (Settings.MVSF, require ('./handler.json'), __dirname, null, 'application/json');
          this.#pServer.LoadHtmlPath (__dirname, [ './web/admin', './web/public']);
          this.#pServer.Run ();
