@@ -1,0 +1,38 @@
+{
+   "_comment1": "'MVSF' contains Server Config Information for MVSF",
+   "MVSF": {
+      "nPort": "2000",
+
+      "_comment1": "If your server is using SSL, rename '_SSL' to 'SSL'",
+      "_SSL": {
+         "key":   "./ssl/server.key",
+         "cert":  "./ssl/server.cert"
+      },
+
+      "_comment2": "If your server is running REST AND requires a prefix to endpoint rename _REST to REST, and specify Prefix",
+      "_REST": {
+         "sPrefix": ""
+      }
+   },
+
+   "SQL": {
+      "type": "MYSQL",
+      "config": {
+         "connectionLimit":  10,
+         "host":             "<DBHOST>",
+         "port":             "<DBPORT>",
+         "user":             "<DBUSER>",
+         "password":         "<DBPASSWORD>",
+         "database":         "<DBNAME>",
+         "multipleStatements": true
+      }
+   },
+
+   "_comment3": "'SQL' contains SQL Config Data used by MVSQL. Currently only support 'MSSQL'",
+   "_SQL": {
+      "type": "MSSQL",
+      "config": {
+         "connectionString": "Driver=SQL Server;Server=<DBHOST>;Database=<DBNAME>;Trusted_Connection=yes;"
+      }
+   }
+}

@@ -7,7 +7,6 @@ Package/dist/
 package-lock.json
 
 mvconfig.json
-settings.json
 sqlconfig.json
 
 mvmf.json
