@@ -198,7 +198,7 @@ h2{
 {
    color: #000 !important;
    background: transparent !important;
-   text-align: left;
+   text-align: center;
 }
 
 .subtitle
@@ -209,13 +209,14 @@ h2{
 
 .fieldname
 {
-   text-align: left;
+   text-align: center;
    font-size:  17px;
 }
 
 .prop-container
 {
    display: flex;
+   margin-top:1.5rem;
 }
 
 .resource-container
@@ -224,13 +225,13 @@ h2{
    margin-bottom: 5px;
 }
 
-.detail, .coordinates > div{
+.d-flex, .detail.coordinates{
    display:flex;
    gap:4px;
 }
 
 .coordinates:not(:last-child){
-   width:60%;
+   width:75%;
 }
 
 .coordinates input{
