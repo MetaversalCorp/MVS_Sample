@@ -136,6 +136,10 @@ a-scene
    background: #357ab8;
 }
 
+h2{
+   margin:0
+}
+
 .header
 {
    text-align: center;
@@ -152,7 +156,6 @@ a-scene
    font-weight: bold;
    color: gray !important;
    font-size: 14px;
-   margin-bottom: 20px;
    background: transparent !important;
 }
 
@@ -180,13 +183,15 @@ a-scene
 {
    background-color: #f8f9fa;
    width: 430px;
-   height: 173px;
+   min-height: 173px;
    justify-content: center;
    align-items: center;
+   padding:1rem;
    margin-left: auto;
    margin-right: auto;
    border: 2px solid black;
    margin-bottom: 10px;
+
 }
 
 .detail
@@ -194,7 +199,6 @@ a-scene
    color: #000 !important;
    background: transparent !important;
    text-align: left;
-   margin-left: 10px;
 }
 
 .subtitle
@@ -220,16 +224,16 @@ a-scene
    margin-bottom: 5px;
 }
 
-
 .detail, .coordinates > div{
    display:flex;
    gap:4px;
 }
 
-.coordinates{
-   width:100%;
+.coordinates:not(:last-child){
+   width:60%;
 }
 
 .coordinates input{
-   width:75%   ;
+   width:85%;
+   margin-bottom:4px;
 }
