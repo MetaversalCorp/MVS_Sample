@@ -89,15 +89,50 @@
                </div>
                <div class="prop-container">
                   <div class="detail-container">
-                     <h2 style="font-size:17px;" class="subtitle">Transform</h2>
+                     <h2 class="subtitle">Transform</h2>
                      <div class="detail jsTransform">
-                        <div class="coord">Position: <span class="jsPos"></span></div>
-                        <div class="coord">Rotation: <span class="jsRot"></span></div>
-                        <div class="coord">Scale: <span class="jsScale"></span></div>
+<table>
+   <tr>
+      <td>
+         <div class="coordinates">
+            <div class="fieldname">Position</div>
+            <label for="pos_x">x:</label>
+            <input type="number" id="pos_x" step="any">
+            <br />
+            <label for="pos_y">y:</label>
+            <input type="number" id="pos_y" step="any">
+            <br />
+            <label for="pos_z">z:</label>
+            <input type="number" id="pos_z" step="any">
+         </div> 
+      </td>
+      <td>
+         <div class="coordinates">
+            <div class="fieldname">Rotation</div>
+            <label for="rot_x">x:</label>
+            <input type="number" id="rot_x" step="any">
+            <br />
+            <label for="rot_y">y:</label>
+            <input type="number" id="rot_y" step="any">
+            <br />
+            <label for="rot_z">z:</label>
+            <input type="number" id="rot_z" step="any">
+            <br />
+            <label for="rot_w">w:</label>
+            <input type="number" id="rot_w" step="any">
+         </div> 
+      </td>
+   </tr>
+   <tr>
+      <td colspan="2">
+         <div class="coord">Scale: <span class="jsScale"></span></div>
+      </td>
+   </tr>
+</table>                                               
                      </div>
                   </div>
                   <div class="detail-container">
-                     <h2 style="font-size:17px;" class="subtitle">Type</h2>
+                     <h2 class="subtitle">Type</h2>
                      <div class="detail jsTransform">
                         <div class="coord">Type: <span class="jsType"></span></div>
                         <div class="coord">SubType: <span class="jsSubtype"></span></div>
@@ -105,7 +140,7 @@
                      </div>
                   </div>
                   <div class="detail-container">
-                     <h1 style="font-size:17px;" class="subtitle">Resource</h1>
+                     <h1 class="subtitle">Resource</h1>
                      <div class="detail jsResource">
                         <div class="item">qwResourceIx: <span class="jsResourceIx"></span></div>
                         <div class="item">Name: <span class="jsName"></span></div>

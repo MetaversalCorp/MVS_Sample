@@ -1,0 +1,221 @@
+.FadeIn, .jsRoot 
+{
+   opacity: 1;
+	 animation-name: fadeInOpacity;
+	 animation-iteration-count: 1;
+	 animation-timing-function: ease-in;
+	 animation-duration: 2s;
+   animation-name: fadeIn;
+}
+@keyframes fadeIn 
+{
+   from 
+   {
+      opacity: 0;
+   }
+   to 
+   {
+      opacity: 1;
+   }
+}
+
+body, html 
+{
+   font-family: Arial, sans-serif;
+   font-weight: 300;
+   color: #000;
+   font-size: 14px;
+   line-height: 1.4;
+   height: 100%;
+   min-height: 100vh;
+   margin: 0;
+   padding: 0;
+   background: transparent;
+}
+
+.body-container 
+{
+   display: flex;
+   position: relative;
+   overflow: hidden;
+   height: calc(100vh - 60px); /* adjust if you want to account for header/form */
+   min-height: 0;
+}
+
+.left-container 
+{
+   height: 100%;
+   max-height: none;
+   overflow-y: auto;
+   width: 300px;
+   flex-shrink: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+.level-container 
+{
+   flex: 1 1 auto;
+   height: 100%;
+   overflow-y: auto;
+   display: flex;
+   flex-direction: column;
+}
+
+.right-container 
+{
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   min-width: 0;
+   position: relative;
+}
+a-scene 
+{
+   display: block;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   border: 2px solid black;
+   position: relative;
+   z-index: 1;
+}
+:fullscreen 
+{
+   background-color: white; 
+}
+
+.jsLevel 
+{
+   position: relative;
+   padding-left: 2px;
+   cursor: pointer;
+   user-select: none;
+   color: #000;
+   background: transparent;
+}
+
+.jsLevel .tree-children 
+{
+   margin-left: 12px;
+   padding-left: 6px;
+   border-left: 1px dotted #bbb;
+   display: block;
+   background: transparent;
+}
+
+.jsLevel.collapsed > .tree-children 
+{
+   display: none;
+}
+.toggle-controls-container 
+{
+   position: absolute;
+   top: 16px;
+   right: 32px;
+   z-index: 10;
+   pointer-events: none;
+}
+
+#toggleControlsBtn 
+{
+   pointer-events: auto;
+   padding: 8px 16px;
+   font-size: 16px;
+   background: #4a90e2;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#toggleControlsBtn:hover 
+{
+   background: #357ab8;
+}
+
+.header 
+{
+   text-align: center;
+   font-weight: bold;
+   color: #000 !important;
+   font-size: 28px;
+   background: transparent !important;
+}
+
+.subheader 
+{
+   font-family: Roboto, Arial, sans-serif;
+   text-align: center;
+   font-weight: bold;
+   color: gray !important;
+   font-size: 14px;
+   margin-bottom: 20px;
+   background: transparent !important;
+}
+
+.tree-label 
+{
+   background: transparent !important;
+}
+
+.tree-type71 
+{
+   color: #000 !important;
+}
+
+.tree-type72 
+{
+   color: #F00 !important;
+}
+
+.tree-type73 
+{
+   color: #0F0 !important;
+}
+
+.detail-container
+{
+   background-color: #f8f9fa;
+   width: 430px;
+   height: 173px;
+   justify-content: center;
+   align-items: center;
+   margin-left: auto;
+   margin-right: auto;
+   border: 2px solid black;
+   margin-bottom: 10px;
+}
+
+.detail 
+{
+   color: #000 !important;
+   background: transparent !important;
+   text-align: left;
+   margin-left: 10px;
+}
+
+.subtitle 
+{
+   text-align: center;
+   font-size:  21px;
+}
+
+.fieldname
+{
+   text-align: left;
+   font-size:  17px;
+}
+
+.prop-container 
+{
+   display: flex;
+}
+
+.resource-container 
+{
+   margin-right: auto;
+   margin-bottom: 5px;
+}
