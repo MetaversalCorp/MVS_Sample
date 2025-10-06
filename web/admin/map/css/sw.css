@@ -1,4 +1,4 @@
-.FadeIn, .jsRoot 
+.FadeIn, .jsRoot
 {
    opacity: 1;
 	 animation-name: fadeInOpacity;
@@ -7,19 +7,19 @@
 	 animation-duration: 2s;
    animation-name: fadeIn;
 }
-@keyframes fadeIn 
+@keyframes fadeIn
 {
-   from 
+   from
    {
       opacity: 0;
    }
-   to 
+   to
    {
       opacity: 1;
    }
 }
 
-body, html 
+body, html
 {
    font-family: Arial, sans-serif;
    font-weight: 300;
@@ -33,7 +33,7 @@ body, html
    background: transparent;
 }
 
-.body-container 
+.body-container
 {
    display: flex;
    position: relative;
@@ -42,7 +42,7 @@ body, html
    min-height: 0;
 }
 
-.left-container 
+.left-container
 {
    height: 100%;
    max-height: none;
@@ -53,7 +53,7 @@ body, html
    flex-direction: column;
 }
 
-.level-container 
+.level-container
 {
    flex: 1 1 auto;
    height: 100%;
@@ -62,7 +62,7 @@ body, html
    flex-direction: column;
 }
 
-.right-container 
+.right-container
 {
    flex: 1;
    display: flex;
@@ -71,7 +71,7 @@ body, html
    min-width: 0;
    position: relative;
 }
-a-scene 
+a-scene
 {
    display: block;
    width: 100%;
@@ -81,12 +81,12 @@ a-scene
    position: relative;
    z-index: 1;
 }
-:fullscreen 
+:fullscreen
 {
-   background-color: white; 
+   background-color: white;
 }
 
-.jsLevel 
+.jsLevel
 {
    position: relative;
    padding-left: 2px;
@@ -96,7 +96,7 @@ a-scene
    background: transparent;
 }
 
-.jsLevel .tree-children 
+.jsLevel .tree-children
 {
    margin-left: 12px;
    padding-left: 6px;
@@ -105,11 +105,11 @@ a-scene
    background: transparent;
 }
 
-.jsLevel.collapsed > .tree-children 
+.jsLevel.collapsed > .tree-children
 {
    display: none;
 }
-.toggle-controls-container 
+.toggle-controls-container
 {
    position: absolute;
    top: 16px;
@@ -118,7 +118,7 @@ a-scene
    pointer-events: none;
 }
 
-#toggleControlsBtn 
+#toggleControlsBtn
 {
    pointer-events: auto;
    padding: 8px 16px;
@@ -131,12 +131,12 @@ a-scene
    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-#toggleControlsBtn:hover 
+#toggleControlsBtn:hover
 {
    background: #357ab8;
 }
 
-.header 
+.header
 {
    text-align: center;
    font-weight: bold;
@@ -145,7 +145,7 @@ a-scene
    background: transparent !important;
 }
 
-.subheader 
+.subheader
 {
    font-family: Roboto, Arial, sans-serif;
    text-align: center;
@@ -156,22 +156,22 @@ a-scene
    background: transparent !important;
 }
 
-.tree-label 
+.tree-label
 {
    background: transparent !important;
 }
 
-.tree-type71 
+.tree-type71
 {
    color: #000 !important;
 }
 
-.tree-type72 
+.tree-type72
 {
    color: #F00 !important;
 }
 
-.tree-type73 
+.tree-type73
 {
    color: #0F0 !important;
 }
@@ -189,7 +189,7 @@ a-scene
    margin-bottom: 10px;
 }
 
-.detail 
+.detail
 {
    color: #000 !important;
    background: transparent !important;
@@ -197,7 +197,7 @@ a-scene
    margin-left: 10px;
 }
 
-.subtitle 
+.subtitle
 {
    text-align: center;
    font-size:  21px;
@@ -209,13 +209,27 @@ a-scene
    font-size:  17px;
 }
 
-.prop-container 
+.prop-container
 {
    display: flex;
 }
 
-.resource-container 
+.resource-container
 {
    margin-right: auto;
    margin-bottom: 5px;
+}
+
+
+.detail, .coordinates > div{
+   display:flex;
+   gap:4px;
+}
+
+.coordinates{
+   width:100%;
+}
+
+.coordinates input{
+   width:75%   ;
 }

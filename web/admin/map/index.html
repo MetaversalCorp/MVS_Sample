@@ -17,24 +17,24 @@
       <script type="text/javascript" src="https://cdn2_david.rp1.dev/v0.0.1/js/mv/MVRP_Map.js"></script>
       <script type="text/javascript" src="js/fabricview.js"></script>
       <script type="text/javascript" src="js/points.js"></script>
-      
+
       <link rel="stylesheet" href="css/sw.css">
-      
+
       <script type="text/javascript">
          var g_pExtractMap;
-         $(document).ready 
+         $(document).ready
          (
-            function () 
+            function ()
             {
                let jForm = $('.jsForm');
                let jName         = jForm.find ('.jsName');
                let jsObjectType  = jForm.find ('.jsObjectType');
                let jsObjectIx    = jForm.find ('.jsObjectIx');
-               
+
                jForm.on
                (
-                  "submit", 
-                  function(event) 
+                  "submit",
+                  function(event)
                   {
                      if (g_pExtractMap)
                         g_pExtractMap.destructor ();
@@ -46,7 +46,7 @@
             }
          );
       </script>
-   </head>   
+   </head>
    <body>
       <div class="body">
          <form class="jsForm">
@@ -79,7 +79,7 @@
          </div>
          <div class="body-container">
             <div class="left-container">
-               <div class="level-container jsRoot"></div>   
+               <div class="level-container jsRoot"></div>
             </div>
             <hr class="divider">
             <div class="right-container jsRight">
@@ -91,49 +91,47 @@
                   <div class="detail-container">
                      <h2 class="subtitle">Transform</h2>
                      <div class="detail jsTransform">
-<table>
-   <tr>
-      <td>
-         <div class="coordinates">
-            <div class="fieldname">Position</div>
-            <label for="pos_x">x:</label>
-            <input type="number" id="pos_x" step="any">
-            <br />
-            <label for="pos_y">y:</label>
-            <input type="number" id="pos_y" step="any">
-            <br />
-            <label for="pos_z">z:</label>
-            <input type="number" id="pos_z" step="any">
-         </div> 
-      </td>
-      <td>
-         <div class="coordinates">
-            <div class="fieldname">Rotation</div>
-            <label for="rot_x">x:</label>
-            <input type="number" id="rot_x" step="any">
-            <br />
-            <label for="rot_y">y:</label>
-            <input type="number" id="rot_y" step="any">
-            <br />
-            <label for="rot_z">z:</label>
-            <input type="number" id="rot_z" step="any">
-            <br />
-            <label for="rot_w">w:</label>
-            <input type="number" id="rot_w" step="any">
-         </div> 
-      </td>
-   </tr>
-   <tr>
-      <td colspan="2">
-         <div class="coord">Scale: <span class="jsScale"></span></div>
-      </td>
-   </tr>
-</table>                                               
+                        <div class="coordinates">
+                           <div class="fieldname">Position</div>
+                           <div class="">
+                              <label for="pos_x">x:</label>
+                              <input type="number" id="pos_x">
+                           </div>
+                           <div class="">
+                              <label for="pos_y">y:</label>
+                              <input type="number" id="pos_y">
+                           </div>
+                           <div class="">
+                              <label for="pos_z">z:</label>
+                              <input type="number" id="pos_z">
+                           </div>
+                        </div>
+                        <div class="coordinates">
+                           <div class="fieldname">Rotation</div>
+                           <div class="">
+                              <label for="rot_x">x:</label>
+                              <input type="number" id="rot_x">
+                           </div>
+                           <div class="">
+                              <label for="rot_y">y:</label>
+                              <input type="number" id="rot_y">
+                           </div>
+                           <div class="">
+                              <label for="rot_z">z:</label>
+                              <input type="number" id="rot_z">
+                           </div>
+                           <div class="">
+                              <label for="rot_w">w:</label>
+                              <input type="number" id="rot_w">
+                           </div>
+
+                        </div>
+                        <div class="coordinates">Scale: <span class="jsScale"></span></div>
                      </div>
                   </div>
                   <div class="detail-container">
                      <h2 class="subtitle">Type</h2>
-                     <div class="detail jsTransform">
+                     <div class=" jsTransform">
                         <div class="coord">Type: <span class="jsType"></span></div>
                         <div class="coord">SubType: <span class="jsSubtype"></span></div>
                         <div class="coord">Fiction: <span class="jsFiction"></span></div>
@@ -141,7 +139,7 @@
                   </div>
                   <div class="detail-container">
                      <h1 class="subtitle">Resource</h1>
-                     <div class="detail jsResource">
+                     <div class=" jsResource">
                         <div class="item">qwResourceIx: <span class="jsResourceIx"></span></div>
                         <div class="item">Name: <span class="jsName"></span></div>
                         <div class="item">Reference: <span class="jsReference"></span></div>
@@ -156,7 +154,7 @@
                </a-scene>
             </div>
          </div>
-         <template id="tmpl_navigate">      
+         <template id="tmpl_navigate">
             <div class="level jsLevel">
                <span class="tree-triangle">+</span>
                <span class="tree-label"></span>
@@ -205,7 +203,7 @@
       });
       return cam;
     }
-    function setControls(mode) 
+    function setControls(mode)
     {
       var oldCam = document.getElementById(cameraId);
       var pos = oldCam ? oldCam.getAttribute('position') : {x:0, y:0, z:8};
@@ -217,8 +215,8 @@
     setControls('wasd');
     $('#toggleControlsBtn').on
     (
-      'click', 
-      function() 
+      'click',
+      function()
       {
          var cam = document.getElementById(cameraId);
          var mode = cam && cam.dataset.mode === 'orbit' ? 'wasd' : 'orbit';
@@ -228,16 +226,16 @@
 
     $(document).on
     (
-      'keydown', 
-      function (e) 
+      'keydown',
+      function (e)
       {
          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
          var cam = document.getElementById(cameraId);
-         if (e.key === 'o' || e.key === 'O') 
+         if (e.key === 'o' || e.key === 'O')
          {
             setControls('orbit');
-         } 
-         else if (e.key === 'm' || e.key === 'M') 
+         }
+         else if (e.key === 'm' || e.key === 'M')
          {
             setControls('wasd');
          }
