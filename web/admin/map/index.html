@@ -31,6 +31,9 @@
                let jsObjectType  = jForm.find ('.jsObjectType');
                let jsObjectIx    = jForm.find ('.jsObjectIx');
 
+               $('.jsOrbit').hide ();
+               $('.jsContainer').hide ();
+
                jForm.on
                (
                   "submit",
@@ -38,6 +41,9 @@
                   {
                      if (g_pExtractMap)
                         g_pExtractMap.destructor ();
+
+                     $('.jsOrbit').show ();
+                     $('.jsContainer').show ();
 
                      g_pExtractMap = new ExtractMap (jName.val (), jsObjectType.val (), jsObjectIx.val ());
                      event.preventDefault();
@@ -74,10 +80,10 @@
                </tr>
             </table>
          </form>
-         <div class="toggle-controls-container">
+         <div class="toggle-controls-container jsOrbit">
             <button id="toggleControlsBtn">Switch to Orbit Controls</button>
          </div>
-         <div class="body-container">
+         <div class="body-container jsContainer">
             <div class="left-container">
                <div class="level-container jsRoot"></div>
             </div>
@@ -85,7 +91,6 @@
             <div class="right-container jsRight">
                <div class="jsProp">
                   <div class="header jsName"></div>
-                  <div class="subheader jsType"></div>
                </div>
                <div class="prop-container">
                   <div class="detail-container">
@@ -95,61 +100,102 @@
                            <div class="fieldname">Position</div>
                            <div class="d-flex">
                               <label for="pos_x">x:</label>
-                              <input type="number" id="pos_x">
+                              <input type="number" id="pos_x" class="jsPosX">
                            </div>
                            <div class="d-flex">
                               <label for="pos_y">y:</label>
-                              <input type="number" id="pos_y">
+                              <input type="number" id="pos_y" class="jsPosY">
                            </div>
                            <div class="d-flex">
                               <label for="pos_z">z:</label>
-                              <input type="number" id="pos_z">
+                              <input type="number" id="pos_z" class="jsPosZ">
                            </div>
                         </div>
                         <div class="coordinates">
                            <div class="fieldname">Rotation</div>
                            <div class="d-flex">
                               <label for="rot_x">x:</label>
-                              <input type="number" id="rot_x">
+                              <input type="number" id="rot_x" class="jsRotX">
                            </div>
                            <div class="d-flex">
                               <label for="rot_y">y:</label>
-                              <input type="number" id="rot_y">
+                              <input type="number" id="rot_y" class="jsRotY">
                            </div>
                            <div class="d-flex">
                               <label for="rot_z">z:</label>
-                              <input type="number" id="rot_z">
+                              <input type="number" id="rot_z" class="jsRotZ">
                            </div>
                            <div class="d-flex">
                               <label for="rot_w">w:</label>
-                              <input type="number" id="rot_w">
+                              <input type="number" id="rot_w" class="jsRotW">
                            </div>
-
                         </div>
                         <div class="coordinates">
                            <div class="fieldname">Scale</div>
-                           <span class="jsScale"></span>
                            <div class="d-flex">
                               <label for="scl_x">x:</label>
-                              <input type="number" id="scl_x">
+                              <input type="number" id="scl_x" class="jsScaleX" disabled>
                            </div>
                            <div class="d-flex">
                               <label for="scl_y">y:</label>
-                              <input type="number" id="scl_y">
+                              <input type="number" id="scl_y" class="jsScaleY" disabled>
                            </div>
                            <div class="d-flex">
                               <label for="scl_z">z:</label>
-                              <input type="number" id="scl_z">
+                              <input type="number" id="scl_z" class="jsScaleZ" disabled>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div class="detail-container">
                      <h2 class="subtitle">Type</h2>
-                     <div class=" jsTransform">
-                        <div class="coord">Type: <span class="jsType"></span></div>
-                        <div class="coord">SubType: <span class="jsSubtype"></span></div>
-                        <div class="coord">Fiction: <span class="jsFiction"></span></div>
+                     <div class="detail coordinates jsSectType">
+                        <div class="coordinates">
+                           <div class="fieldname"></div>
+                           <div class="d-flex">
+                              <label for="type">Type:</label>
+                              <select class="jsType71">
+                                 <option value="1">Universe</option>
+                                 <option value="2">Super Cluster</option>
+                                 <option value="3">Galaxy</option>
+                                 <option value="4">Blackhole</option>
+                                 <option value="5">Nebula</option>
+                                 <option value="6">Star Cluster</option>
+                                 <option value="7">Constellation</option>
+                                 <option value="8">Star System</option>
+                                 <option value="9">Star</option>
+                                 <option value="10">Planet System</option>
+                                 <option value="11">Planet</option>
+                                 <option value="12">Moon</option>
+                                 <option value="13">Debris</option>
+                                 <option value="14">Satellite</option>
+                                 <option value="15">Transport</option>
+                                 <option value="16">Surface</option>
+                              </select>
+                              <select class="jsType72">
+                                 <option value="1">Root</option>
+                                 <option value="2">Water</option>
+                                 <option value="3">Land</option>
+                                 <option value="4">Country</option>
+                                 <option value="5">Territory</option>
+                                 <option value="6">State</option>
+                                 <option value="7">County</option>
+                                 <option value="8">City</option>
+                                 <option value="9">Community</option>
+                                 <option value="10">Sector</option>
+                                 <option value="11">Parcel</option>
+                              </select>
+                              <input type="number" id="type" class="jsType73">
+                           </div>
+                           <div class="d-flex">
+                              <label for="subtype">Subtype:</label>
+                              <input type="number" id="subtype" class="jsSubtype">
+                           </div>
+                           <div class="d-flex">
+                              <label for="Fiction">Fiction:</label>
+                              <input type="checkbox" id="fiction" class="jsFiction">
+                           </div>
+                        </div>
                      </div>
                   </div>
                   <div class="detail-container">

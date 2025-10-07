@@ -8,6 +8,7 @@
       #m_MapRMXItem;
       #m_wClass_Object;
       #m_twObjectIx;
+      #m_aType;
 
       static eSTATE =
       {
@@ -22,7 +23,7 @@
          super ();
          this.#m_wClass_Object = (wClass_Object == 0) ? 71 : wClass_Object;
          this.#m_twObjectIx    = (twObjectIx == 0)  ? 1 : twObjectIx;
-         
+
          this.xCollator = new Intl.Collator ();
 
          InitMap ();
@@ -32,6 +33,24 @@
          this.#m_jRight = $('.jsRight');
          this.#m_jRoot.on ('click', '.jsLevel', this.onClick_Object.bind (this));
          this.#m_MapRMXItem = {};
+
+         this.#m_jRight.find ('.jsType71').hide ();
+         this.#m_jRight.find ('.jsType72').hide ();
+         this.#m_jRight.find ('.jsType73').hide ();
+         if (this.#m_wClass_Object == 71)
+         {
+            this.#m_aType = [ 'NULL', 'UNIVERSE', 'SUPERCLUSTER', 'GALAXYCLUSTER', 'GALAXY', 'BLACKHOLE', 'NEBULA', 'STARCLUSTER', 'CONSTELLATION', 'STARSYSTEM', 'STAR', 'PLANETSYSTEM', 'PLANET', 'MOON', 'DEBRIS', 'SATELLITE', 'TRANSPORT', 'SURFACE' ];
+         }
+         else if (this.#m_wClass_Object == 72)
+         {
+            this.#m_aType = [ 'NULL', 'ROOT', 'WATER', 'LAND', 'COUNTRY', 'TERRITORY', 'STATE', 'COUNTY', 'CITY', 'COMMUNITY', 'SECTOR', 'PARCEL' ];
+         }
+         else
+         {
+            this.#m_aType = null;
+         }
+
+         this.#m_jRight.find ('.jsType' + this.#m_wClass_Object).show ();
 
          this.pRequire = MV.MVMF.Core.Require ('MVRP_Dev,MVRP_Map,MVRP_Fabric');
 
@@ -209,6 +228,7 @@
          let tri = jItem.children ('.tree-triangle');
          let pRMXObject = jItem.data ('object');
          let pObjectHead = pRMXObject.pSource.pObjectHead;
+         let sName;
 
          // Expand/collapse logic
          jItem.toggleClass ('collapsed');
@@ -237,26 +257,22 @@
 
          if (pObjectHead.wClass_Object == 71)
          {
-             let aType = [ 'NULL', 'UNIVERSE', 'SUPERCLUSTER', 'GALAXYCLUSTER', 'GALAXY', 'BLACKHOLE', 'NEBULA', 'STARCLUSTER', 'CONSTELLATION', 'STARSYSTEM', 'STAR', 'PLANETSYSTEM', 'PLANET', 'MOON', 'DEBRIS', 'SATELLITE', 'TRANSPORT', 'SURFACE' ];
-             
-             this.#m_jRight.find ('.jsName').html (pRMXObject.pName.wsRMCObjectId);
-             this.#m_jRight.find ('.jsType').html (aType[pRMXObject.pType.bType]);
+            sName = pRMXObject.pName.wsRMCObjectId;
          }
          else if (pObjectHead.wClass_Object == 72)
          {
-             let aType = [ 'NULL', 'ROOT', 'WATER', 'LAND', 'COUNTRY', 'TERRITORY', 'STATE', 'COUNTY', 'CITY', 'COMMUNITY', 'SECTOR', 'PARCEL' ];
-             this.#m_jRight.find ('.jsName').html (pRMXObject.pName.wsRMTObjectId);
-             this.#m_jRight.find ('.jsType').html (aType[pRMXObject.pType.bType]);
+            sName = pRMXObject.pName.wsRMTObjectId;
          }
          else if (pObjectHead.wClass_Object == 73)
          {
-             this.#m_jRight.find ('.jsName').html ('{ ' + pRMXObject.twObjectIx + ' }');
-             this.#m_jRight.find ('.jsType').html ('{ ' + pRMXObject.pType.bType + ' }');
+            sName = '';
          }
-         this.#m_jRight.find ('.jsSubtype').html ('{ ' + pRMXObject.pType.bSubtype + ' }');
-         this.#m_jRight.find ('.jsFiction').html ('{ ' + pRMXObject.pType.bFiction + ' }');
+         this.#m_jRight.find ('.jsName').html (sName + ' (' + pRMXObject.twObjectIx + ')');
+
+         this.UpdateRMXType      (pRMXObject.pType, pObjectHead.wClass_Object);
          this.UpdateRMXTransform (pRMXObject.pTransform);
          this.UpdateRMXResource  (pRMXObject.pResource);
+
          if (this.#m_MapRMXItem[pObjectHead.wClass_Object + '-' + pRMXObject.twObjectIx] == undefined)
          {
             this.#m_MapRMXItem[pObjectHead.wClass_Object + '-' + pRMXObject.twObjectIx] =
@@ -267,6 +283,15 @@
             pRMXObject.Attach (this);
          }  
          e.stopPropagation ();
+      }
+
+      UpdateRMXType (pType, wClass_Object)
+      {
+         let jSection = this.#m_jRight.find ('.jsSectType');
+
+         jSection.find ('.jsType' + wClass_Object).val (pType.bType);
+         jSection.find ('.jsSubtype').val (pType.bSubtype);
+         jSection.find ('.jsFiction').prop('checked', pType.bFiction != 0);
       }
 
       UpdateRMXResource (pResource)
@@ -280,9 +305,19 @@
       UpdateRMXTransform (pTransform)
       {
          let jTransform = this.#m_jRight.find ('.jsTransform');
-         jTransform.find ('.jsPos').html (pTransform.vPosition.dX + ', ' + pTransform.vPosition.dY + ', ' + pTransform.vPosition.dZ);
-         jTransform.find ('.jsRot').html (pTransform.qRotation.dX + ', ' + pTransform.qRotation.dY + ', ' + pTransform.qRotation.dZ + ', ' + pTransform.qRotation.dW);
-         jTransform.find ('.jsScale').html (pTransform.vScale.dX + ', ' + pTransform.vScale.dY + ', ' + pTransform.vScale.dZ);
+
+         jTransform.find ('.jsPosX').val (pTransform.vPosition.dX);
+         jTransform.find ('.jsPosY').val (pTransform.vPosition.dY);
+         jTransform.find ('.jsPosZ').val (pTransform.vPosition.dZ);
+
+         jTransform.find ('.jsRotX').val (pTransform.qRotation.dX);
+         jTransform.find ('.jsRotY').val (pTransform.qRotation.dY);
+         jTransform.find ('.jsRotZ').val (pTransform.qRotation.dZ);
+         jTransform.find ('.jsRotW').val (pTransform.qRotation.dW);
+
+         jTransform.find ('.jsScaleX').val (pTransform.vScale.dX);
+         jTransform.find ('.jsScaleY').val (pTransform.vScale.dY);
+         jTransform.find ('.jsScaleZ').val (pTransform.vScale.dZ);
       }
 
       #SortItems (jContainer, jRow, sName)
@@ -311,16 +346,3 @@
          else jRows.eq (a).before (jRow);
       }
    };
-/*
-Test ()
-{
-var onResponse = function (pIAction, Param)
-{
-console.log (pIAction);
-}
-let pRMTObject = this.#m_pLnG.Model_Open ('RMTObject', 900000001);
-let pIAction = pRMTObject.Request ('ADDENDUM');
-pIAction.pRequest.sType = 'sector';
-pIAction.Send (this, onResponse);
-}
-*/
