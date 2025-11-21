@@ -1,7 +1,7 @@
 {
    "_comment1": "'MVSF' contains Server Config Information for MVSF",
    "MVSF": {
-      "nPort": "2000",
+      "nPort": "<PORT>",
 
       "_comment1": "If your server is using SSL, rename '_SSL' to 'SSL'",
       "_SSL": {
@@ -10,7 +10,7 @@
       },
 
       "_comment2": "If your server is running REST AND requires a prefix to endpoint rename _REST to REST, and specify Prefix",
-      "_REST": {
+      "REST": {
          "sPrefix": ""
       }
    },
@@ -19,11 +19,11 @@
       "type": "MYSQL",
       "config": {
          "connectionLimit":  10,
-         "host":             "<DBHOST>",
-         "port":             "<DBPORT>",
-         "user":             "<DBUSER>",
-         "password":         "<DBPASSWORD>",
-         "database":         "<DBNAME>",
+         "host":             "<MYSQLHOST>",
+         "port":             "<MYSQLPORT>",
+         "user":             "<MYSQLUSER>",
+         "password":         "<MYSQLPASSWORD>",
+         "database":         "<MYSQLDATABASE>",
          "multipleStatements": true
       }
    },

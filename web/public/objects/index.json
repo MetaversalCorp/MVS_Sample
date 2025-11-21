@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "objects": [
+    {
+      "name": "test-room",
+      "path": "/objects/test-room.glb"
+    },
+    {
+      "name": "Fox",
+      "path": "/objects/Fox.glb"
+    },
+    {
+      "name": "Duck",
+      "path": "/objects/Duck.glb"
+    }
+  ]
+}
