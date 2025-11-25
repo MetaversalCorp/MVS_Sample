@@ -75,8 +75,8 @@ function RunQuery2Ex (Session, pData, fnRSP, fn, bRecover, pSQLData)
 
    if (true) //Session.bRP1 && (pSQLData.Param || Session.bGuest == 0))
    {
-      const Query = g_pMVSQL.Compose (pSQLData.sProc, pData, pSQLData.aData, Session.sIPAddress, (Session.twRPersonaIx ? Session.twRPersonaIx : 0), 2);
-      console.log('Query: '+ Query);
+      const Query = g_pMVSQL.Compose (pSQLData.sProc, pData, pSQLData.aData, Session.sIPAddress, (Session.twRPersonaIx ? Session.twRPersonaIx : 1), 2);
+
       if (Query)
       {
          g_pMVSQL.Exec (Query).then
